@@ -1,0 +1,1029 @@
+@font-face {
+    font-family: cuyabra;
+    src: url(cuyabra.ttf);
+}
+
+@font-face {
+    font-family: KpProgrammerAlternatesNbp;
+    src: url(KpProgrammerAlternatesNbp.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Анимации */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes collapseOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+}
+
+.background {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    min-height: 100vh;
+    position: relative;
+    z-index: 5;
+}
+
+.leftSide {
+    grid-column: 1 / 2;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.rightSide {
+    grid-column: 3 / 4;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.center-column {
+    grid-column: 2 / 3;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.top-bar {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 12;
+    padding: 0 50px;
+    pointer-events: none;
+}
+
+.info {
+    font-size: 15px;
+    font-family: cuyabra;
+    color: #4E4735;
+    padding: 8px;
+    border-radius: 4px;
+    text-align: left;
+    margin: 0;
+    pointer-events: auto;
+}
+
+.info1 {
+    font-size: 16px;
+    font-family: cuyabra;
+    color: #4E4735;
+    padding: 8px;
+    border-radius: 4px;
+    text-align: right;
+    margin: 0;
+    pointer-events: auto;
+}
+
+.pixels {
+    background-image: linear-gradient(0deg, #00000000 75%, rgba(0, 0, 0, 0.137) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent), linear-gradient(90deg, transparent 75%, rgba(0, 0, 0, 0.137) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%,
+            rgba(0, 0, 0, 0.705) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent 40%, rgba(0, 0, 0, 0.1) 100%, transparent);
+    height: 100vh;
+    background-size: 5px 5px;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.logo {
+    z-index: 16;
+    margin: 20px 0;
+}
+
+.logo img {
+    width: 215px;
+    height: auto;
+}
+
+.main {
+    z-index: 17;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+}
+
+.title {
+    text-align: center;
+    font-family: KpProgrammerAlternatesNbp;
+    font-size: 30px;
+    color: #4E4735;
+    margin: 0;
+}
+
+.line {
+    width: 640px;
+    max-width: 90%;
+    height: 6px;
+    margin: 20px auto;
+}
+
+.lineLower {
+    width: 640px;
+    max-width: 90%;
+    height: 6px;
+    margin: 0;
+}
+
+/* ========== КАРТА С АНИМАЦИЕЙ ========== */
+.map-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.map-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.location-title {
+    font-family: KpProgrammerAlternatesNbp;
+    font-size: 24px;
+    color: #4E4735;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.location-title.visible {
+    opacity: 1;
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.map-image {
+    max-width: 70%;
+    height: auto;
+    transition: all 0.3s ease;
+}
+
+.map-image.collapse {
+    animation: collapseOut 0.3s ease-out forwards;
+}
+
+.map-image.expand {
+    animation: fadeInScale 0.4s ease-out forwards;
+}
+
+/* ========== СЕТКА ЛОКАЦИЙ 2+3+2 ========== */
+.locations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 280px);
+    gap: 15px 30px;
+    justify-content: center;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 900px;
+}
+
+.location-card {
+    background-color: #ACA68E;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    width: 100%;
+    height: 50px;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.location-card.active {
+    background-color: #4E4735;
+}
+
+.location-card.active .location-square {
+    background-color: #ACA68E;
+}
+
+.location-card.active .location-name {
+    color: #ACA68E;
+}
+
+.location-square {
+    width: 20px;
+    height: 20px;
+    background-color: #2a2a2a;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.location-name {
+    font-family: KpProgrammerAlternatesNbp;
+    font-size: 20px;
+    color: #4E4735;
+    transition: color 0.2s ease;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.location-card:hover {
+    background-color: #4E4735;
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(172, 166, 142, 0.5);
+}
+
+.location-card:hover .location-square {
+    background-color: #ACA68E;
+}
+
+.location-card:hover .location-name {
+    color: #ACA68E;
+}
+
+.location-card:active {
+    transform: scale(0.98);
+}
+
+.location-card:nth-child(1) { grid-column: 1 / 2; }
+.location-card:nth-child(2) { grid-column: 2 / 3; }
+.location-card:nth-child(3) { grid-column: 3 / 4; }
+.location-card:nth-child(4) { grid-column: 1 / 2; }
+.location-card:nth-child(5) { grid-column: 2 / 3; }
+.location-card:nth-child(6) { grid-column: 3 / 4; }
+.location-card:nth-child(7) { grid-column: 2 / 3; }
+
+/* ========== ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ ========== */
+.extra-line {
+    width: 640px;
+    max-width: 90%;
+    height: 6px;
+    margin: 20px auto;
+    display: none;
+}
+
+.extra-line.visible {
+    display: block;
+}
+
+.info-container {
+    width: 650px;
+    margin: 10px auto;
+    overflow: hidden;
+}
+
+.info-container.hidden {
+    display: none;
+}
+
+.info-container.visible {
+    display: block;
+    animation: slideInLeft 0.5s ease-out;
+}
+
+
+
+.location-details {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px 20px;
+    border-left: 3px solid #ACA68E;
+}
+
+.detail-item {
+    margin-bottom: 10px;
+    font-family: 'cuyabra', monospace;
+    font-size:20px;
+    line-height: 1.4;
+}
+
+.detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.detail-label {
+    color: #2a2a2a;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.detail-value {
+    color: #4E4735;
+}
+
+.subdesc2 {
+    text-align: center;
+    font-family: cuyabra;
+    font-size: 30px;
+    color: #4E4735;
+}
+
+.footText {
+    position: absolute;
+    text-align: center;
+    display: flex;
+    left: 0;
+    bottom: 30px;
+    right: 0;
+    justify-content: center;
+    z-index: 12;
+    font-size: 15px;
+    font-family: cuyabra;
+    color: #4E4735;
+    padding: 0 50px;
+    pointer-events: none;
+}
+/* ========== АДАПТИВ ПОД ТЕЛЕФОНЫ (iPhone SE 375px и выше) ========== */
+
+/* Планшеты и маленькие ноутбуки */
+@media (max-width: 1024px) {
+    .locations-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        max-width: 100%;
+    }
+    
+    .location-card {
+        padding: 8px 4px;
+        height: auto;
+        min-height: 42px;
+    }
+    
+    .location-square {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .location-name {
+        font-size: 12px;
+    }
+    
+    .title {
+        font-size: 24px;
+    }
+    
+    .map-image {
+        max-width: 80%;
+        width: auto;
+    }
+    
+    .location-title {
+        font-size: 18px;
+    }
+    
+    .detail-item {
+        font-size: 14px;
+    }
+    
+    .subdesc2 {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+}
+
+/* Мобильные устройства (ширина до 768px) */
+@media (max-width: 768px) {
+    /* Боковые сайдбары */
+    .leftSide, .rightSide {
+        padding: 0 3px !important;
+    }
+    
+    .leftSide img, .rightSide img {
+        width: 14px !important;
+        height: auto !important;
+    }
+    
+    .leftSide img:nth-child(2), .leftSide img:nth-child(3),
+    .rightSide img:nth-child(2), .rightSide img:nth-child(3) {
+        display: none !important;
+    }
+    
+    /* Центральная колонка */
+    .center-column {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        padding: 0 5px;
+    }
+    
+    .main {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        padding-bottom: 20px;
+    }
+    
+    /* Сетка кнопок */
+    .locations-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        max-width: 100%;
+        margin: 10px auto;
+        padding: 0 5px;
+    }
+    
+    .location-card {
+        padding: 6px 3px;
+        height: auto;
+        min-height: 38px;
+        gap: 4px;
+        justify-content: center;
+    }
+    
+    .location-square {
+        width: 10px;
+        height: 10px;
+        flex-shrink: 0;
+    }
+    
+    .location-name {
+        font-size: 9px;
+        letter-spacing: 0px;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.2;
+        word-break: break-word;
+    }
+    
+    /* Заголовки */
+    .title {
+        font-size: 18px;
+        padding: 0 10px;
+        margin-bottom: 10px;
+    }
+    
+    .location-title {
+        font-size: 13px;
+        margin-bottom: 8px;
+        padding: 0 10px;
+    }
+    
+    /* Карта */
+    .map-wrapper {
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .map-container {
+        width: 100%;
+        margin: 5px auto;
+        padding: 0 10px;
+    }
+    
+    .map-image {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+    }
+    
+    /* Информация */
+    .info-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 10px;
+        margin: 5px auto;
+        box-sizing: border-box;
+    }
+    
+    .location-details {
+        padding: 8px 10px;
+    }
+    
+    .detail-item {
+        font-size: 10px;
+        margin-bottom: 5px;
+    }
+    
+    .detail-label {
+        display: inline-block;
+        margin-right: 5px;
+    }
+    
+    .detail-value {
+        display: inline;
+    }
+    
+    /* Линии */
+    .line, .lineLower, .extra-line {
+        width: 85% !important;
+        max-width: 250px !important;
+        height: 2px !important;
+        margin: 12px auto !important;
+    }
+    
+    .extra-line.visible {
+        display: block;
+    }
+    
+    /* subdesc2 — фиксируем отступ, чтобы не налезало на футер */
+    .subdesc2 {
+        font-size: 16px;
+        padding: 0 10px;
+        margin: 15px 0 40px 0;
+        position: relative;
+        z-index: 5;
+    }
+    
+    /* Логотип */
+    .logo {
+        margin: 10px 0;
+    }
+    
+    .logo img {
+        width: 90px;
+    }
+    
+    /* Верхняя панель */
+    .top-bar {
+        padding: 0 10px !important;
+    }
+    
+    .info, .info1 {
+        font-size: 7px;
+        padding: 2px 4px;
+    }
+    
+    .info {
+        max-width: 65%;
+    }
+    
+    /* Футер — увеличиваем отступ снизу */
+    .footText {
+        font-size: 8px;
+        bottom: 10px;
+        padding: 0 15px;
+    }
+}
+
+/* Очень маленькие экраны (iPhone SE 375px) */
+@media (max-width: 480px) {
+    .leftSide img, .rightSide img {
+        width: 10px !important;
+    }
+    
+    .locations-grid {
+        gap: 4px;
+    }
+    
+    .location-card {
+        padding: 4px 2px;
+        min-height: 32px;
+    }
+    
+    .location-square {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .location-name {
+        font-size: 7.5px;
+    }
+    
+    .title {
+        font-size: 15px;
+    }
+    
+    .location-title {
+        font-size: 11px;
+    }
+    
+    .detail-item {
+        font-size: 9px;
+    }
+    
+    .subdesc2 {
+        font-size: 13px;
+        margin: 10px 0 35px 0;
+    }
+    
+    .logo img {
+        width: 65px;
+    }
+            /* Скрываем лишние картинки, оставляем только одну */
+    .leftSide img:nth-child(1), .rightSide img:nth-child(1),
+    .leftSide img:nth-child(2), .leftSide img:nth-child(3),
+    .rightSide img:nth-child(2), .rightSide img:nth-child(3) {
+        display: none !important;
+    }
+    .info, .info1 {
+        font-size: 6px;
+        padding: 2px 3px;
+    }
+    
+    .line, .lineLower, .extra-line {
+        max-width: 200px !important;
+        margin: 10px auto !important;
+    }
+    
+    .footText {
+        font-size: 6px;
+        bottom: 8px;
+    }
+}
+/* ========== АДАПТИВ ПОД ТЕЛЕФОНЫ (iPhone SE 375px и выше) ========== */
+
+/* Планшеты и маленькие ноутбуки */
+@media (max-width: 1024px) {
+    .locations-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        max-width: 100%;
+    }
+    
+    .location-card {
+        padding: 8px 4px;
+        height: auto;
+        min-height: 45px;
+        justify-content: center;
+    }
+    
+    .location-square {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+    }
+    
+    .location-name {
+        font-size: 11px;
+        text-align: center;
+    }
+    
+    .title {
+        font-size: 24px;
+    }
+    
+    .map-image {
+        max-width: 80%;
+        width: auto;
+    }
+    
+    .location-title {
+        font-size: 18px;
+    }
+    
+    .detail-item {
+        font-size: 14px;
+    }
+    
+    .subdesc2 {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+}
+
+/* Мобильные устройства (ширина до 768px) */
+@media (max-width: 768px) {
+    /* Боковые сайдбары */
+    .leftSide, .rightSide {
+        padding: 0 3px !important;
+    }
+    
+    .leftSide img, .rightSide img {
+        width: 14px !important;
+        height: auto !important;
+    }
+    
+    .leftSide img:nth-child(2), .leftSide img:nth-child(3),
+    .rightSide img:nth-child(2), .rightSide img:nth-child(3) {
+        display: none !important;
+    }
+    
+    /* Центральная колонка */
+    .center-column {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        padding: 0 5px;
+    }
+    
+    .main {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        padding-bottom: 20px;
+    }
+    
+    /* Сетка кнопок */
+    .locations-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        max-width: 100%;
+        margin: 10px auto;
+        padding: 0 5px;
+    }
+    
+    .location-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 8px 4px;
+        height: auto;
+        min-height: 44px;
+        width: 100%;
+        background-color: #ACA68E;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+    
+    .location-square {
+        width: 12px;
+        height: 12px;
+        background-color: #2a2a2a;
+        flex-shrink: 0;
+        transition: background-color 0.2s ease;
+    }
+    
+    .location-name {
+        font-family: KpProgrammerAlternatesNbp;
+        font-size: 10px;
+        color: #4E4735;
+        letter-spacing: 0.5px;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.3;
+        word-break: break-word;
+        transition: color 0.2s ease;
+    }
+    
+    /* Заголовки */
+    .title {
+        font-size: 18px;
+        padding: 0 10px;
+        margin-bottom: 10px;
+    }
+    
+    .location-title {
+        font-size: 14px;
+        margin-bottom: 8px;
+        padding: 0 10px;
+    }
+    
+    /* Карта */
+    .map-wrapper {
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .map-container {
+        width: 100%;
+        margin: 5px auto;
+        padding: 0 10px;
+    }
+    
+    .map-image {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+    }
+    
+    /* Информация */
+    .info-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 10px;
+        margin: 5px auto;
+        box-sizing: border-box;
+    }
+    
+    .location-details {
+        padding: 8px 10px;
+    }
+    
+    .detail-item {
+        font-size: 11px;
+        margin-bottom: 5px;
+    }
+    
+    .detail-label {
+        display: inline-block;
+        margin-right: 5px;
+    }
+    
+    .detail-value {
+        display: inline;
+    }
+    
+    /* Линии */
+    .line, .lineLower, .extra-line {
+        width: 85% !important;
+        max-width: 250px !important;
+        height: 2px !important;
+        margin: 12px auto !important;
+    }
+    
+    .extra-line.visible {
+        display: block;
+    }
+    
+    /* subdesc2 */
+    .subdesc2 {
+        font-size: 16px;
+        padding: 0 10px;
+        margin: 15px 0 40px 0;
+        position: relative;
+        z-index: 5;
+    }
+    
+    /* Логотип */
+    .logo {
+        margin: 10px 0;
+    }
+    
+    .logo img {
+        width: 90px;
+    }
+    
+    /* Верхняя панель */
+    .top-bar {
+        padding: 0 10px !important;
+    }
+    
+    .info, .info1 {
+        font-size: 7px;
+        padding: 2px 4px;
+    }
+    
+    .info {
+        max-width: 65%;
+    }
+    
+    /* Футер */
+    .footText {
+        font-size: 8px;
+        bottom: 10px;
+        padding: 0 15px;
+    }
+    
+    /* Hover эффекты для мобильных (опционально) */
+    .location-card:active {
+        background-color: #4E4735;
+        transform: scale(0.98);
+    }
+    
+    .location-card:active .location-square {
+        background-color: #ACA68E;
+    }
+    
+    .location-card:active .location-name {
+        color: #ACA68E;
+    }
+}
+
+/* Очень маленькие экраны (iPhone SE 375px) */
+@media (max-width: 480px) {
+    .leftSide img, .rightSide img {
+        width: 10px !important;
+    }
+    
+    .locations-grid {
+        gap: 6px;
+    }
+    
+    .location-card {
+        padding: 6px 2px;
+        min-height: 38px;
+        gap: 4px;
+    }
+    
+    .location-square {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .location-name {
+        font-size: 9px;
+        letter-spacing: 0px;
+    }
+    
+    .title {
+        font-size: 15px;
+    }
+    
+    .location-title {
+        font-size: 12px;
+    }
+    
+    .detail-item {
+        font-size: 10px;
+    }
+    
+    .subdesc2 {
+        font-size: 14px;
+        margin: 10px 0 35px 0;
+    }
+    
+    .logo img {
+        width: 65px;
+    }
+    
+    /* Скрываем лишние картинки сайдбаров */
+    .leftSide img:nth-child(1), .rightSide img:nth-child(1),
+    .leftSide img:nth-child(2), .leftSide img:nth-child(3),
+    .rightSide img:nth-child(2), .rightSide img:nth-child(3) {
+        display: none !important;
+    }
+    
+    .info, .info1 {
+        font-size: 6px;
+        padding: 2px 3px;
+    }
+    
+    .line, .lineLower, .extra-line {
+        max-width: 180px !important;
+        margin: 8px auto !important;
+    }
+    
+    .footText {
+        font-size: 6px;
+        bottom: 8px;
+    }
+}

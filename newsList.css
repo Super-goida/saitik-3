@@ -1,0 +1,845 @@
+@font-face {
+    font-family: cuyabra;
+    src: url(cuyabra.ttf);
+}
+
+@font-face {
+    font-family: KpProgrammerAlternatesNbp;
+    src: url(KpProgrammerAlternatesNbp.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.background {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    height: 100vh;
+    position: relative;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.leftSide {
+    grid-column: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.rightSide {
+    grid-column: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.center-column {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px 0 30px;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+.info,
+.info1 {
+    font-family: cuyabra;
+    color: #4E4735;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.info {
+    font-size: 15px;
+    text-align: left;
+}
+
+.info1 {
+    font-size: 16px;
+    text-align: right;
+}
+
+.chat-container {
+    display: flex;
+    gap: 30px;
+    align-items: stretch;
+    flex: 1;
+    margin-bottom: 30px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.chatList {
+    background-color: rgb(172, 166, 142);
+    width: 450px;
+    overflow-y: auto;
+    padding: 15px;
+    border-radius: 4px;
+    height: 100%;
+}
+
+.topics {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.topic {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 4px;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+}
+
+.square {
+    width: 16px;
+    height: 16px;
+    background-color: #2a2a2a;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.topic-title {
+    font-family: 'cuyabra', monospace;
+    font-size: 16px;
+    color: #4E4735;
+    transition: color 0.2s ease;
+}
+
+.topic:hover {
+    background-color: #4E4735;
+}
+
+.topic:hover .topic-title {
+    color: rgba(172, 166, 142, 0.70);
+}
+
+.topic:hover .square {
+    background-color: rgba(172, 166, 142, 0.70);
+}
+
+.topic.active-topic {
+    background-color: #4E4735;
+}
+
+.topic.active-topic .topic-title {
+    color: rgba(172, 166, 142, 0.70);
+}
+
+.topic.active-topic .square {
+    background-color: rgba(172, 166, 142, 0.70);
+}
+
+.chatMain-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+}
+
+.chat-line {
+    width: 100%;
+    height: 6px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.chatMain {
+    position: relative;
+    background-color: rgba(172, 166, 142, 0.70);
+    width: 100%;
+    flex: 1;
+    border-radius: 4px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.message-header {
+    background-color: #2a2a2a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #4E4735;
+    flex-shrink: 0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.square-message {
+    width: 16px;
+    height: 16px;
+    background-color: #ACA68E;
+    flex-shrink: 0;
+}
+
+.message-title {
+    font-family: 'cuyabra', monospace;
+    font-size: 18px;
+    color: #ACA68E;
+    letter-spacing: 1px;
+}
+
+.message-time {
+    font-family: 'cuyabra', monospace;
+    font-size: 18px;
+    color: #ACA68E;
+}
+
+.close-topic {
+    background: none;
+    border: none;
+    color: #ACA68E;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 4px;
+    transition: color 0.2s;
+    font-family: monospace;
+}
+
+.close-topic:hover {
+    color: #c4be9e;
+}
+
+.topic-creator {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background-color: rgba(0, 0, 0, 0.2);
+    font-family: 'cuyabra', monospace;
+    font-size: 16px;
+    color: #4E4735;
+    flex-shrink: 0;
+}
+
+.creator-label {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.creator-name {
+    color: #4E4735;
+    padding: 4px 0;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.topic-divider {
+    height: 2px;
+    background-color: rgba(78, 71, 53, 0.5);
+    margin: 0 16px;
+    flex-shrink: 0;
+}
+
+.messages-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+/* ========== НАСТРОЙКИ ШИРИНЫ СООБЩЕНИЯ (ЛЕГКО РЕДАКТИРОВАТЬ) ========== */
+/* ИЗМЕНИТЕ max-width НА НУЖНОЕ ЗНАЧЕНИЕ: 500px, 400px, 450px, 80% и т.д. */
+.message {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    max-width: 500px; /* <- ИЗМЕНИТЕ ЭТО ЗНАЧЕНИЕ ДЛЯ ШИРИНЫ СООБЩЕНИЯ */
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.message.received {
+    align-self: flex-start;
+}
+
+.message.sent {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 48px;
+    height: 48px;
+    background-color: #2a2a2a;
+    border-radius: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #ACA68E;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Контент сообщения */
+.message-content {
+    background-color: #4e47356b;
+    padding: 10px 14px;
+    border-radius: 12px;
+    max-width: 100%;
+    min-width: 0;
+}
+
+.message.sent .message-content {
+    background-color: #4e47356b;
+}
+
+.message-author {
+    font-family: 'cuyabra', monospace;
+    font-size: 18px;
+    font-weight: bold;
+    color: #4E4735;
+    margin-bottom: 4px;
+    display: block;
+}
+
+/* Текст сообщения — перенос как в мессенджерах */
+.message-text {
+    font-family: 'cuyabra', monospace;
+    font-size: 18px;
+    color: #4E4735;
+    line-height: 1.4;
+    /* Правильный перенос слов — слово целиком переносится на новую строку */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    /* Запрещаем разрыв внутри слов */
+    word-break: normal;
+}
+
+.chat-input-disabled {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-align: center;
+    font-family: 'cuyabra', monospace;
+    font-size: 16px;
+    color: #ACA68E;
+    letter-spacing: 1px;
+    border: 1px dashed #4E4735;
+    cursor: not-allowed;
+    margin: 0 20px 20px 20px;
+    flex-shrink: 0;
+}
+
+.footText {
+    text-align: center;
+    font-size: 15px;
+    font-family: cuyabra;
+    color: #4E4735;
+    padding: 15px 0 25px 0;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.pixels {
+    background-image: linear-gradient(0deg, #00000000 75%, rgba(0, 0, 0, 0.137) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent), linear-gradient(90deg, transparent 75%, rgba(0, 0, 0, 0.137) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%,
+            rgba(0, 0, 0, 0.705) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent 40%, rgba(0, 0, 0, 0.1) 100%, transparent);
+    height: 100vh;
+    background-size: 5px 5px;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* ========== СТИЛИЗАЦИЯ СКРОЛЛБАРА ДЛЯ СООБЩЕНИЙ ========== */
+.messages-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+    background: #4E4735;
+    border-radius: 4px;
+    border: 1px solid rgba(172, 166, 142, 0.5);
+    transition: all 0.2s ease;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+    background: #ACA68E;
+    border-color: #4E4735;
+}
+
+.messages-container::-webkit-scrollbar-thumb:active {
+    background: #c4be9e;
+}
+
+.messages-container::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Firefox поддержка */
+.messages-container {
+    scrollbar-width: thin;
+    scrollbar-color: #4E4735 rgba(0, 0, 0, 0.25);
+}
+/* ========== АДАПТИВ ПОД ТЕЛЕФОНЫ ========== */
+
+/* Планшеты и маленькие ноутбуки */
+@media (max-width: 1024px) {
+    .chatList {
+        width: 350px;
+    }
+    
+    .topic-title {
+        font-size: 14px;
+    }
+    
+    .chat-line {
+        height: 4px;
+    }
+    
+    .message-title {
+        font-size: 16px;
+    }
+    
+    .message-time {
+        font-size: 14px;
+    }
+    
+    .creator-label, .creator-name {
+        font-size: 14px;
+    }
+    
+    .message-author {
+        font-size: 16px;
+    }
+    
+    .message-text {
+        font-size: 14px;
+    }
+}
+
+/* Мобильные устройства (ширина до 768px) */
+@media (max-width: 768px) {
+    /* Боковые сайдбары */
+    .leftSide, .rightSide {
+        padding: 0 3px !important;
+    }
+    
+    .leftSide img, .rightSide img {
+        width: 16px !important;
+        height: auto !important;
+    }
+    
+    .leftSide img:nth-child(2), .rightSide img:nth-child(2) {
+        display: none !important;
+    }
+    
+    /* Центральная колонка */
+    .center-column {
+        padding: 0 10px 0 10px !important;
+        margin-top: 0 !important;
+        min-height: 100vh;
+        height: auto;
+    }
+    
+    /* Верхняя панель — прижата к самому верху */
+    .top-bar {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        padding: 10px 10px 0 10px !important;
+        background: transparent;
+        margin-bottom: 5px;
+        width: 100%;
+    }
+    
+    .info, .info1 {
+        font-size: 8px !important;
+        padding: 4px 8px !important;
+        border-radius: 4px;
+    }
+    
+    .info {
+        max-width: 65% !important;
+    }
+    
+    /* Логотип */
+    .logo {
+        margin: 5px 0 10px 0 !important;
+    }
+    
+    .logo img {
+        width: 100px !important;
+    }
+    
+    /* Контейнер чата */
+    .chat-container {
+        position: relative;
+        gap: 0;
+        margin-bottom: 15px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+    }
+    
+    /* Слайдер-панель — прижата к верху */
+    .chatList {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 280px;
+        height: 100vh;
+        background-color: rgb(172, 166, 142);
+        z-index: 1001;
+        transition: left 0.3s ease;
+        padding: 60px 15px 20px 15px;
+        overflow-y: auto;
+        border-radius: 0;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .chatList.open {
+        left: 0;
+    }
+    
+    /* Стрелка-слайдер */
+    .slider-handle {
+        position: fixed;
+        left: 0;
+        top: 20px;
+        width: 30px;
+        height: 50px;
+        background-color: #4E4735;
+        border-radius: 0 10px 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 1002;
+        transition: left 0.3s ease;
+        border: 1px solid #ACA68E;
+        border-left: none;
+    }
+    
+    /* Когда слайдер открыт, стрелка двигается вместе с ним */
+    .chatList.open ~ .slider-handle,
+    .slider-handle.open {
+        left: 280px;
+    }
+    
+    .slider-handle span {
+        color: #ACA68E;
+        font-size: 24px;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+    }
+    
+    .slider-handle.open span {
+        transform: rotate(180deg);
+    }
+    
+    /* Правый блок — экран сообщений */
+    .chatMain-area {
+        width: 100%;
+        gap: 8px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        height: 100%;
+    }
+    
+    .chat-line {
+        width: 90%;
+        max-width: 250px;
+        height: 3px;
+        flex-shrink: 0;
+    }
+    
+    .chatMain {
+        flex: 1;
+        min-height: 0;
+        max-height: none;
+        overflow-y: auto;
+        height: auto;
+    }
+    
+    /* Стили сообщений на мобильных */
+    .message-header {
+        padding: 8px 12px;
+    }
+    
+    .square-message {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .message-title {
+        font-size: 14px;
+    }
+    
+    .message-time {
+        font-size: 12px;
+    }
+    
+    .close-topic {
+        font-size: 16px;
+    }
+    
+    .topic-creator {
+        padding: 8px 12px;
+        font-size: 12px;
+        gap: 8px;
+    }
+    
+    .creator-label, .creator-name {
+        font-size: 12px;
+    }
+    
+    .creator-name {
+        font-size: 12px;
+    }
+    
+    .topic-divider {
+        margin: 0 12px;
+    }
+    
+    .messages-container {
+        padding: 12px;
+        gap: 12px;
+    }
+    
+    /* Сообщения */
+    .message {
+        max-width: 90%;
+        gap: 8px;
+    }
+    
+    .message-avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+    
+    .message-content {
+        padding: 8px 12px;
+    }
+    
+    .message-author {
+        font-size: 12px;
+    }
+    
+    .message-text {
+        font-size: 12px;
+    }
+    
+    .chat-input-disabled {
+        padding: 10px 12px;
+        font-size: 12px;
+        margin: 0 12px 12px 12px;
+    }
+    
+    /* Список тем в слайдере */
+    .topics {
+        gap: 8px;
+        margin-top: 0;
+    }
+    
+    .topic {
+        padding: 10px 12px;
+    }
+    
+    .square {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .topic-title {
+        font-size: 14px;
+    }
+    
+    /* Футер */
+    .footText {
+        font-size: 8px;
+        bottom: 15px;
+        padding: 0 15px;
+        position: relative;
+        margin-top: 10px;
+        flex-shrink: 0;
+    }
+}
+
+/* Очень маленькие экраны (iPhone SE 375px) */
+@media (max-width: 480px) {
+    .leftSide img, .rightSide img {
+        width: 12px !important;
+    }
+    
+    .leftSide img, .rightSide img {
+        display: none !important;
+    }
+    
+    .center-column {
+        padding: 0 8px 0 8px !important;
+    }
+    
+    .info, .info1 {
+        font-size: 7px !important;
+        padding: 3px 6px !important;
+    }
+    
+    .logo img {
+        width: 70px !important;
+    }
+    
+    .chatList {
+        width: 240px;
+        left: -240px;
+        padding: 50px 15px 20px 15px;
+    }
+    
+    .chatList.open {
+        left: 0;
+    }
+    
+    .chatList.open ~ .slider-handle,
+    .slider-handle.open {
+        left: 240px;
+    }
+    
+    .slider-handle {
+        width: 25px;
+        height: 45px;
+        top: 15px;
+    }
+    
+    .slider-handle span {
+        font-size: 20px;
+    }
+    
+    .message-title {
+        font-size: 12px;
+    }
+    
+    .message-time {
+        font-size: 10px;
+    }
+    
+    .creator-label, .creator-name {
+        font-size: 10px;
+    }
+    
+    .message-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+    
+    .message-author {
+        font-size: 11px;
+    }
+    
+    .message-text {
+        font-size: 11px;
+    }
+    
+    .chat-input-disabled {
+        font-size: 10px;
+        padding: 8px 10px;
+    }
+    
+    .topic-title {
+        font-size: 12px;
+    }
+    
+    .square {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .chat-line {
+        max-width: 200px;
+    }
+    
+    .footText {
+        font-size: 7px;
+        bottom: 10px;
+    }
+}

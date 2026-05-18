@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Картография — YoRHa</title>
+    <link rel="stylesheet" href="map.css">
+</head>
+
+<body>
+    <div class="background">
+        <img src="Frame 5.png" alt="background">
+    </div>
+
+    <div class="wrapper">
+        <!-- Левый сайдбар -->
+        <div class="leftSide">
+            <img src="Group 2.png" alt="left">
+            <img src="SmallLine2.png" alt="left">
+            <img src="little2.png" alt="left">
+        </div>
+
+        <!-- Верхняя панель -->
+        <div class="top-bar">
+            <div class="info">
+                Идентификатор системы: ARK-YoRHa-Map<br>
+                Уровень доступа: СТАНДАРТНЫЙ // ДЛЯ ВСЕХ БОЕВЫХ ЕДИНИЦ YoRHa<br>
+                Версия базы знаний: 5.1.3<br>
+                Статус: ОНЛАЙН // СИНХРОНИЗИРУЕТСЯ<br>
+                СИСТЕМНЫЙ АРХИВ YoRHa // БАЗА ДАННЫХ ОБЩЕГО ДОСТУПА
+            </div>
+            <div class="info1">
+                СЛАВА ЧЕЛОВЕЧЕСТВУ!
+            </div>
+        </div>
+
+        <!-- Центральная колонка -->
+        <div class="center-column">
+            <div class="logo">
+                <img src="YoRHa_Logo.webp" alt="YoRHa Logo">
+            </div>
+
+            <div class="main">
+                <div class="title">
+                    <p>Межстанцевая Сеть Обмена Данными (МСОД)<br>
+                        "Мнемозина"</p>
+                </div>
+
+                <img class="line" src="Group 4.png" alt="line">
+
+                <!-- Контейнер карты с анимацией -->
+                <div class="map-wrapper">
+                    <div class="map-container">
+                        <div class="location-title"></div>
+                        <img class="map-image" src="map.png" alt="Карта местности">
+                    </div>
+                </div>
+                <img class="line" src="Group 4.png" alt="line">
+
+                <!-- Дублируемый line (появляется только при нажатии на кнопку) -->
+
+                <!-- Сетка кнопок 2+3+2 с квадратами -->
+                <div class="locations-grid">
+                    <div class="location-card">
+                        <div class="location-square"></div>
+                        <span class="location-name">ЗАБРОШЕННАЯ ФАБРИКА</span>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-square"></div>
+                        <span class="location-name">ПУСТЫННАЯ ЗОНА</span>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-square"></div>
+                        <span class="location-name">ДЕРЕВНЯ ПАСКАЛЯ</span>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-square"></div>
+                        <span class="location-name">РУИНЫ ГОРОДА</span>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-square"></div>
+                        <span class="location-name">ПАРК РАЗВЛЕЧЕНИЙ</span>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-square"></div>
+                        <span class="location-name">ЛЕСНАЯ ЗОНА</span>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-square"></div>
+                        <span class="location-name">ЗАТОПЛЕННЫЙ ГОРОД</span>
+                    </div>
+                </div>
+                <img class="lineLower" src="Group 4.png" alt="line">
+                <!-- Контейнер для дополнительной информации (появляется при клике) -->
+                <div class="info-container hidden">
+                    <div class="location-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Состояние местности:</span>
+                            <span class="detail-value" id="territory-status">оспориваемая территория</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Обитаемые машины:</span>
+                            <span class="detail-value" id="machine-list">Маленький коротышка, Многоступенчатая модель,
+                                Маленькая двуногая, Средняя двуногая, Средняя четвероногая, Средняя многожак</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Уровень опасности:</span>
+                            <span class="detail-value" id="danger-level">высокий</span>
+                        </div>
+                    </div>
+                </div>
+                <img class="extra-line" src="Group 4.png" alt="line">
+                <div class="subdesc2">
+                    СЛАВА ЧЕЛОВЕЧЕСТВУ!
+                </div>
+            </div>
+        </div>
+
+        <!-- Правый сайдбар -->
+        <div class="rightSide">
+            <img src="Group 1.png" alt="right">
+            <img src="smallerLine.png" alt="right">
+            <img src="little.png" alt="right">
+        </div>
+    </div>
+
+    <footer class="footText">
+        2026, Square Enix.<br>
+        Все права защищены.
+    </footer>
+    <div class="pixels"></div>
+
+    <script src="map.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Слава Человечеству!</title>
+    <link rel="stylesheet" href="command.css">
+</head>
+<body>
+    <div class="background">
+        <img src="Frame 5.png" alt="background">
+    </div>
+
+    <div class="wrapper">
+        <!-- Левый сайдбар -->
+        <div class="leftSide">
+            <img src="Group 2.png" alt="left">
+            <img src="little2.png" alt="left">
+        </div>
+
+        <!-- Центральная колонка со всем контентом -->
+        <div class="center-column">
+            <div class="top-bar">
+                <div class="info">
+                    Идентификатор системы: ARK-YoRHa-Command<br>
+                    Уровень доступа: СТАНДАРТНЫЙ // ДЛЯ ВСЕХ БОЕВЫХ ЕДИНИЦ YoRHa<br>
+                    Версия базы знаний: 4.5.2<br>
+                    Статус: ОНЛАЙН // СИНХРОНИЗИРУЕТСЯ<br>
+                    СИСТЕМНЫЙ АРХИВ YoRHa // БАЗА ДАННЫХ ОБЩЕГО ДОСТУПА
+                </div>
+                <div class="info1">
+                    СЛАВА ЧЕЛОВЕЧЕСТВУ!
+                </div>
+            </div>
+
+            <div class="chat-container">
+                <div class="chatList">
+                    <div class="topics">
+                        <div class="topic"><div class="square"></div><span class="topic-title">Оператор 1О: Плановая проверка связи</span></div>
+                        <div class="topic"><div class="square"></div><span class="topic-title">Коммандер Уайт: Всем постам!</span></div>
+                        <div class="topic"><div class="square"></div><span class="topic-title">Совет Человечества: Прогресс войны</span></div>
+                        <div class="topic"><div class="square"></div><span class="topic-title">Оператор 1О: Плановая проверка связи</span></div>
+                        <div class="topic"><div class="square"></div><span class="topic-title">Коммандер Уайт: Обновление патрулей</span></div>
+                        <div class="topic"><div class="square"></div><span class="topic-title">Коммандер Уайт: Срочное сообщение!</span></div>
+                        <div class="topic"><div class="square"></div><span class="topic-title">Оператор 1О: Плановая проверка связи</span></div>
+                        <div class="topic"><div class="square"></div><span class="topic-title">Совет Человечества: Мы победим!</span></div>
+                        <div class="topic"><div class="square"></div><span class="topic-title">Коммандер Уайт: Важное напоминание</span></div>
+                        <div class="topic"><div class="square"></div><span class="topic-title">Оператор 1О: Плановая проверка связи</span></div>
+                    </div>
+                </div>
+
+                <div class="chatMain-area">
+                    <img class="chat-line" src="longLine.png" alt="line">
+                    <div class="chatMain"></div>
+                    <img class="chat-line" src="longLine.png" alt="line">
+                </div>
+            </div>
+
+            <footer class="footText">
+                2026, Square Enix.<br>Все права защищены.
+            </footer>
+        </div>
+
+        <!-- Правый сайдбар -->
+        <div class="rightSide">
+            <img src="Group 1.png" alt="right">
+            <img src="little.png" alt="right">
+        </div>
+    </div>
+
+    <div class="pixels"></div>
+    <script src="command.js"></script>
+    <script src="secretWords.js"></script>
+    <script>
+    // Слайдер для мобильных устройств
+    document.addEventListener('DOMContentLoaded', () => {
+        const chatContainer = document.querySelector('.chat-container');
+        const chatList = document.querySelector('.chatList');
+        
+        if (!chatContainer || !chatList) return;
+        
+        // Создаём стрелку-слайдер
+        const sliderHandle = document.createElement('div');
+        sliderHandle.className = 'slider-handle';
+        sliderHandle.innerHTML = '<span>›</span>';
+        document.body.appendChild(sliderHandle);
+        
+        // Функция открытия/закрытия
+        function openMenu() {
+            chatList.classList.add('open');
+            sliderHandle.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMenu() {
+            chatList.classList.remove('open');
+            sliderHandle.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        
+        function toggleMenu() {
+            if (chatList.classList.contains('open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+        
+        // Обработчики
+        sliderHandle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
+        });
+        
+        // При клике на тему — закрываем меню на мобильных
+        const topics = document.querySelectorAll('.topic');
+        topics.forEach(topic => {
+            topic.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    setTimeout(closeMenu, 300);
+                }
+            });
+        });
+        
+        // При изменении размера окна — закрываем меню, если оно открыто
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && chatList.classList.contains('open')) {
+                closeMenu();
+            }
+        });
+    });
+</script>
+</body>
+</html>

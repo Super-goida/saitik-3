@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архив Миссий — YoRHa</title>
+    <link rel="stylesheet" href="archive.css">
+</head>
+
+<body>
+    <div class="background">
+        <img src="Frame 5.png" alt="background">
+    </div>
+
+    <div class="wrapper">
+        <!-- Левый сайдбар -->
+        <div class="leftSide">
+            <img src="Group 2.png" alt="left">
+            <img src="SmallLine2.png" alt="left">
+        </div>
+
+        <!-- Верхняя панель (абсолютная, как в main1) -->
+        <div class="top-bar">
+            <div class="info">
+                Идентификатор системы: ARK-YoRHa-MisArc<br>
+                Уровень доступа: СТАНДАРТНЫЙ // ДЛЯ ВСЕХ БОЕВЫХ ЕДИНИЦ YoRHa<br>
+                Версия базы знаний: 7.2.1<br>
+                Статус: ОНЛАЙН // СИНХРОНИЗИРУЕТСЯ<br>
+                СИСТЕМНЫЙ АРХИВ YoRHa // БАЗА ДАННЫХ ОБЩЕГО ДОСТУПА
+            </div>
+            <div class="info1">
+                СЛАВА ЧЕЛОВЕЧЕСТВУ!
+            </div>
+        </div>
+
+        <!-- Центральная колонка -->
+        <div class="center-column">
+            <div class="logo">
+                <img src="YoRHa_Logo.webp" alt="YoRHa Logo">
+            </div>
+
+            <div class="main">
+                <div class="title">
+                    <p>Межстанцевая Сеть Обмена Данными (МСОД)<br>
+                        "Мнемозина"</p>
+                </div>
+
+                <img class="line" src="Group 4.png" alt="line">
+
+                <div class="missions-grid">
+                    <div class="mission-card">
+                        <div class="mission-square"></div>
+                        <span class="mission-name">УЛУЧШЕНИЕ СВЯЗИ</span>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-square"></div>
+                        <span class="mission-name">ПАМЯТЬ 06 11B</span>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-square"></div>
+                        <span class="mission-name">ПРЕДАТЕЛИ YoRHa</span>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-square"></div>
+                        <span class="mission-name">ОТРЯД РАЗВЕДКИ</span>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-square"></div>
+                        <span class="mission-name">ИССЛЕДОВАНИЕ СВЯЗИ</span>
+                    </div>
+                    <div class="mission-card">
+                        <div class="mission-square"></div>
+                        <span class="mission-name">ДАННЫЕ СТАРОГО МИРА</span>
+                    </div>
+                </div>
+
+                <img class="line" src="Group 4.png" alt="line">
+
+                <div class="archive-description">
+                    Доступ к активным и завершенным миссиям. Возможность просмотра отчетов и извлечения уроков из действий других подразделений.
+                </div>
+
+                <img class="lineLower" src="Group 4.png" alt="line">
+
+                <div class="subdesc2">
+                    СЛАВА ЧЕЛОВЕЧЕСТВУ!
+                </div>
+            </div>
+        </div>
+
+        <!-- Правый сайдбар -->
+        <div class="rightSide">
+            <img src="Group 1.png" alt="right">
+            <img src="smallerLine.png" alt="right">
+        </div>
+    </div>
+
+    <footer class="footText">
+        2026, Square Enix.<br>
+        Все права защищены.
+    </footer>
+    <div class="pixels"></div>
+
+    // Добавьте этот код в archive.html перед </body>
+<script>
+    // Переход на страницу миссии
+    document.querySelectorAll('.mission-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const missionName = card.querySelector('.mission-name').textContent;
+            window.location.href = `mission.html?mission=${encodeURIComponent(missionName)}`;
+        });
+    });
+</script>
+<script src="secretWords.js"></script>
+</body>
+
+</html>

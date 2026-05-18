@@ -1,0 +1,527 @@
+@font-face {
+    font-family: cuyabra;
+    src: url(cuyabra.ttf);
+}
+
+@font-face {
+    font-family: KpProgrammerAlternatesNbp;
+    src: url(KpProgrammerAlternatesNbp.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+body {
+    min-height: 100vh;
+    position: relative;
+}
+
+.background {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    min-height: 100vh;
+    position: relative;
+    z-index: 5;
+}
+
+.leftSide {
+    grid-column: 1 / 2;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.rightSide {
+    grid-column: 3 / 4;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.center-column {
+    grid-column: 2 / 3;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.top-bar {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 12;
+    padding: 0 50px;
+    pointer-events: none;
+}
+
+.info {
+    font-size: 15px;
+    font-family: cuyabra;
+    color: #4E4735;
+    padding: 8px;
+    border-radius: 4px;
+    text-align: left;
+    margin: 0;
+    pointer-events: auto;
+}
+
+.info1 {
+    font-size: 16px;
+    font-family: cuyabra;
+    color: #4E4735;
+    padding: 8px;
+    border-radius: 4px;
+    text-align: right;
+    margin: 0;
+    pointer-events: auto;
+}
+
+.pixels {
+    background-image: linear-gradient(0deg, #00000000 75%, rgba(0, 0, 0, 0.137) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent), linear-gradient(90deg, transparent 75%, rgba(0, 0, 0, 0.137) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%,
+            rgba(0, 0, 0, 0.705) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent 40%, rgba(0, 0, 0, 0.1) 100%, transparent);
+    height: 100vh;
+    background-size: 5px 5px;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.logo {
+    z-index: 16;
+    margin: 20px 0;
+}
+
+.logo img {
+    width: 215px;
+    height: auto;
+}
+
+.main {
+    z-index: 17;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    padding-top: 0;
+}
+
+.title {
+    text-align: center;
+    font-family: KpProgrammerAlternatesNbp;
+    font-size: 30px;
+    color: #4E4735;
+    margin: 0;
+}
+
+.line {
+    width: 640px;
+    max-width: 90%;
+    height: 6px;
+    margin: 20px auto;
+}
+
+.lineLower {
+    width: 640px;
+    max-width: 90%;
+    height: 6px;
+        margin: 20px auto;
+}
+
+.missions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 280px);
+    gap: 15px 40px;
+    justify-content: center;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 650px;
+}
+
+.mission-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 10px 16px;
+    transition: all 0.2s ease;
+    background-color: #ACA68E;
+    width: 250px;
+    height: 55px;
+}
+
+.mission-square {
+    width: 20px;
+    height: 20px;
+    background-color: #2a2a2a;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.mission-name {
+    font-family: KpProgrammerAlternatesNbp;
+    font-size: 20px;
+    color: #4E4735;
+    transition: color 0.2s ease;
+    letter-spacing: 1px;
+}
+
+.mission-card:hover {
+    background-color: #4E4735;
+}
+
+.mission-card:hover .mission-square {
+    background-color: #ACA68E;
+}
+
+.mission-card:hover .mission-name {
+    color: #ACA68E;
+}
+
+.archive-description {
+    font-family: 'KpProgrammerAlternatesNbp', monospace;
+    font-size: 30px;
+    color: #4E4735;
+    text-align: center;
+    max-width: 550px;
+    margin: 20px;
+    line-height: 1.5;
+}
+
+.subdesc2 {
+    text-align: center;
+    font-family: cuyabra;
+    font-size: 30px;
+    color: #4E4735;
+    margin: 20px;
+}
+
+.footText {
+    position: absolute;
+    text-align: center;
+    display: flex;
+    left: 0;
+    bottom: 50px;
+    right: 0;
+    justify-content: center;
+    z-index: 12;
+    font-size: 15px;
+    font-family: cuyabra;
+    color: #4E4735;
+    padding: 0 50px;
+    pointer-events: none;
+}
+/* Секретные слова */
+.secret-word {
+    color: #8a8268 !important;
+    background: rgba(172, 166, 142, 0.2) !important;
+    cursor: pointer;
+    padding: 0 3px;
+    border-radius: 3px;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.secret-word:hover {
+    background: #4E4735 !important;
+    color: #ACA68E !important;
+    transform: scale(1.02);
+}
+
+.secret-word.collected {
+    opacity: 0.5;
+    text-decoration: line-through;
+    cursor: default;
+    pointer-events: none;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    70% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+/* ========== АДАПТИВ ПОД ТЕЛЕФОНЫ ========== */
+
+/* Планшеты и маленькие ноутбуки */
+@media (max-width: 1024px) {
+    .missions-grid {
+        grid-template-columns: repeat(2, 240px);
+        gap: 15px 30px;
+        max-width: 550px;
+    }
+    
+    .mission-card {
+        width: 100%;
+        min-width: 200px;
+        height: 50px;
+        padding: 8px 12px;
+    }
+    
+    .mission-square {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .mission-name {
+        font-size: 16px;
+    }
+    
+    .title {
+        font-size: 26px;
+    }
+    
+    .archive-description {
+        font-size: 24px;
+        max-width: 450px;
+    }
+    
+    .subdesc2 {
+        font-size: 24px;
+    }
+}
+
+/* Мобильные устройства (ширина до 768px) */
+@media (max-width: 768px) {
+    /* Боковые сайдбары */
+    .leftSide, .rightSide {
+        padding: 0 3px !important;
+    }
+    
+    .leftSide img, .rightSide img {
+        width: 16px !important;
+        height: auto !important;
+    }
+    
+    .leftSide img:nth-child(2), .rightSide img:nth-child(2) {
+        display: none !important;
+    }
+    
+    /* Центральная колонка — добавляем отступ сверху */
+    .center-column {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        padding: 0 5px;
+        margin-top: 55px !important;
+    }
+    
+    .main {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        padding-bottom: 20px;
+    }
+    
+    /* Верхняя панель — компактная */
+    .top-bar {
+        top: 5px !important;
+        left: 10px !important;
+        right: 10px !important;
+        padding: 0 !important;
+        border-radius: 6px;
+        width: auto;
+    }
+    
+    .info, .info1 {
+        font-size: 8px !important;
+        padding: 4px 8px !important;
+        background: transparent;
+    }
+    
+    .info {
+        max-width: 65% !important;
+    }
+    
+    /* Кнопки в одну колонку */
+    .missions-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        max-width: 100%;
+        margin: 15px auto;
+        padding: 0 10px;
+    }
+    
+    .mission-card {
+        width: 280px;
+        min-width: 260px;
+        height: 55px;
+        padding: 10px 16px;
+        gap: 12px;
+    }
+    
+    .mission-square {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .mission-name {
+        font-size: 16px;
+        letter-spacing: 1px;
+        white-space: normal;
+        text-align: center;
+    }
+    
+    /* Логотип */
+    .logo {
+        margin: 5px 0 10px 0 !important;
+    }
+    
+    .logo img {
+        width: 100px !important;
+    }
+    
+    /* Заголовки */
+    .title {
+        font-size: 20px;
+        padding: 0 10px;
+    }
+    
+    .archive-description {
+        font-size: 16px;
+        max-width: 90%;
+        margin: 15px auto;
+        line-height: 1.4;
+    }
+    
+    /* Линии */
+    .line, .lineLower {
+        width: 80% !important;
+        max-width: 250px !important;
+        height: 3px !important;
+        margin: 15px auto !important;
+    }
+    
+    /* subdesc2 — отступ от футера */
+    .subdesc2 {
+        font-size: 18px;
+        margin: 20px 0 40px 0;
+        position: relative;
+        z-index: 5;
+    }
+    
+    /* Футер */
+    .footText {
+        font-size: 8px;
+        bottom: 15px;
+        padding: 0 15px;
+    }
+}
+
+/* Очень маленькие экраны (iPhone SE 375px) */
+@media (max-width: 480px) {
+    .leftSide img, .rightSide img {
+        width: 12px !important;
+    }
+    
+    .center-column {
+        margin-top: 45px !important;
+    }
+    
+    .top-bar {
+        top: 3px !important;
+        left: 5px !important;
+        right: 5px !important;
+    }
+    
+    .info, .info1 {
+        font-size: 7px !important;
+        padding: 3px 6px !important;
+    }
+    
+    .mission-card {
+        width: 240px;
+        min-width: 220px;
+        height: 50px;
+        padding: 8px 12px;
+    }
+    
+    .mission-square {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .mission-name {
+        font-size: 14px;
+    }
+    
+    .title {
+        font-size: 18px;
+    }
+    
+    .archive-description {
+        font-size: 14px;
+    }
+    
+    .subdesc2 {
+        font-size: 16px;
+        margin: 15px 0 35px 0;
+    }
+    
+    .logo img {
+        width: 80px !important;
+    }
+    
+    .info, .info1 {
+        font-size: 7px;
+        padding: 2px 4px;
+    }
+    
+    .line, .lineLower {
+        max-width: 200px !important;
+    }
+    
+    /* Скрываем лишние картинки */
+    .leftSide img:nth-child(1), .rightSide img:nth-child(1),
+    .leftSide img:nth-child(2), .leftSide img:nth-child(3),
+    .rightSide img:nth-child(2), .rightSide img:nth-child(3) {
+        display: none !important;
+    }
+}

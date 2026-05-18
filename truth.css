@@ -1,0 +1,516 @@
+@font-face {
+    font-family: cuyabra;
+    src: url(cuyabra.ttf);
+}
+
+@font-face {
+    font-family: KpProgrammerAlternatesNbp;
+    src: url(KpProgrammerAlternatesNbp.ttf);
+}
+@font-face {
+    font-family: CocoBikeR;
+    src: url(CocoBikerLight-trial.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ========== ЗАСТАВКА ========== */
+.splash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #0a0a0a;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease;
+    cursor: pointer;
+}
+
+.splash-text {
+    font-family: KpProgrammerAlternatesNbp;
+    font-size: 48px;
+    color: #ACA68E;
+    letter-spacing: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+
+.splash-text.changed {
+    color: #aa0000;
+    text-shadow: 0 0 15px #000000;
+    font-family: CocoBikeR;
+}
+
+.splash-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Основной контент изначально скрыт */
+.wrapper.hidden {
+    display: none;
+}
+
+/* ========== ОСНОВНАЯ СЕТКА ========== */
+.wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    min-height: 100vh;
+    position: relative;
+    z-index: 5;
+}
+
+.background {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Затемнение фона для читаемости текста */
+.background::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, rgba(20, 10, 5, 0.5) 0%, rgba(50, 25, 10, 0.8) 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Боковые сайдбары */
+.leftSide, .rightSide {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.leftSide {
+    grid-column: 1 / 2;
+}
+
+.rightSide {
+    grid-column: 3 / 4;
+}
+
+/* Центральная колонка */
+.center-column {
+    grid-column: 2 / 3;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0 10px;
+}
+
+/* Верхняя панель */
+.top-bar {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 12;
+    padding: 0 50px;
+    pointer-events: none;
+}
+
+.info, .info1 {
+    font-family: cuyabra;
+    color: #D4C9B3;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    border-radius: 4px;
+    pointer-events: auto;
+}
+
+.info {
+    font-size: 15px;
+    text-align: left;
+}
+
+.info1 {
+    font-size: 16px;
+    text-align: right;
+}
+
+.pixels {
+    background-image: linear-gradient(0deg, #00000000 75%, rgba(0, 0, 0, 0.137) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent), linear-gradient(90deg, transparent 75%, rgba(0, 0, 0, 0.137) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%,
+            rgba(0, 0, 0, 0.705) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent 40%, rgba(0, 0, 0, 0.1) 100%, transparent);
+    height: 100vh;
+    background-size: 5px 5px;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 60px;
+}
+
+.title {
+    text-align: center;
+    font-family: KpProgrammerAlternatesNbp;
+    font-size: 36px;
+    color: #E0A878;
+    margin: 0 0 20px 0;
+    letter-spacing: 2px;
+}
+
+.line, .lineLower {
+    width: 640px;
+    max-width: 90%;
+    height: 2px;
+    background: #8B5A2B;
+    margin: 30px auto;
+    border: none;
+    display: block;
+}
+
+/* ========== ДВЕ КОЛОНКИ СТАТЕЙ ========== */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 30px 0;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.truth-section {
+    background: rgba(20, 10, 5, 0.75);
+    backdrop-filter: blur(3px);
+    border-left: 4px solid #8B5A2B;
+    border-radius: 8px;
+    padding: 20px;
+    transition: 0.2s;
+}
+
+.truth-section:hover {
+    background: rgba(20, 10, 5, 0.85);
+    transform: translateY(-2px);
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #8B5A2B;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.header-square {
+    width: 18px;
+    height: 18px;
+    background: #8B5A2B;
+}
+
+.header-title {
+    font-family: KpProgrammerAlternatesNbp;
+    font-size: 20px;
+    color: #F0B27A;
+}
+
+.section-content {
+    font-family: 'cuyabra', monospace;
+    font-size: 15px;
+    color: #D4C9B3;
+    line-height: 1.5;
+}
+
+.section-content p {
+    margin-bottom: 12px;
+}
+
+.truth-highlight {
+    color: #F0B27A;
+    background: rgba(50, 25, 10, 0.8);
+    padding: 0 3px;
+    border-radius: 4px;
+}
+
+/* ========== ПОСЛАНИЕ 5S ========== */
+.message-5s {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    border-radius: 20px;
+    padding: 30px 40px;
+    margin: 40px auto;
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    border: 1px solid #8B5A2B;
+}
+
+.message-quote {
+    font-size: 60px;
+    color: #8B5A2B;
+    font-family: serif;
+    line-height: 1;
+    opacity: 0.6;
+    text-align: left;
+}
+
+.message-quote.end {
+    text-align: right;
+}
+
+.message-text {
+    font-family: 'cuyabra', monospace;
+    font-size: 16px;
+    color: #EEDDCC;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+.highlight-5s {
+    color: #F0B27A;
+    font-weight: bold;
+}
+
+.signature {
+    display: block;
+    margin-top: 20px;
+    font-style: italic;
+    color: #B8A28C;
+}
+
+/* Футер */
+.footText {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    bottom: 30px;
+    right: 0;
+    font-size: 13px;
+    font-family: cuyabra;
+    color: #B8A28C;
+    padding: 0 50px;
+    pointer-events: none;
+    z-index: 12;
+}
+
+/* Анимация появления контента */
+@keyframes fadeInContent {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.wrapper:not(.hidden) {
+    animation: fadeInContent 0.8s ease-out;
+}
+
+/* ========== АДАПТИВ ПОД ТЕЛЕФОНЫ ========== */
+
+@media (max-width: 768px) {
+    /* Боковые сайдбары */
+    .leftSide, .rightSide {
+        padding: 0 3px !important;
+    }
+    
+    .leftSide img, .rightSide img {
+        width: 16px !important;
+        height: auto !important;
+    }
+    
+    .leftSide img:nth-child(2), .rightSide img:nth-child(2) {
+        display: none !important;
+    }
+    
+    /* Центральная колонка */
+    .center-column {
+        padding: 0 10px !important;
+        margin-top: 50px !important;
+    }
+    
+    /* Верхняя панель */
+    .top-bar {
+        top: 5px !important;
+        left: 10px !important;
+        right: 10px !important;
+        padding: 0 !important;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 6px;
+        width: auto;
+    }
+    
+    .info, .info1 {
+        font-size: 8px !important;
+        padding: 4px 8px !important;
+    }
+    
+    .info {
+        max-width: 65% !important;
+    }
+    
+    /* Заголовок */
+    .title {
+        font-size: 24px !important;
+    }
+    
+    /* Две колонки превращаются в одну */
+    .articles-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    .header-title {
+        font-size: 18px !important;
+    }
+    
+    .section-content {
+        font-size: 13px !important;
+    }
+    
+    /* Линии */
+    .line, .lineLower {
+        width: 80% !important;
+        max-width: 250px !important;
+        height: 2px !important;
+        margin: 20px auto !important;
+    }
+    .splash-text {
+    font-family: KpProgrammerAlternatesNbp !important;
+    font-size: 30px !important;
+    color: #ACA68E !important;
+    letter-spacing: 8px !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+    opacity: 1 !important;
+}
+
+.splash-text.changed {
+    color: #aa0000 !important;
+    text-shadow: 0 0 15px #000000 !important;
+    font-family: CocoBikeR !important;
+}
+
+.splash-overlay.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+    /* Послание 5S */
+    .message-5s {
+        padding: 20px !important;
+        margin: 30px 15px !important;
+    }
+    
+    .message-quote {
+        font-size: 40px !important;
+    }
+    
+    .message-text {
+        font-size: 14px !important;
+    }
+    
+    /* Футер */
+    .footText {
+        font-size: 8px !important;
+        bottom: 15px !important;
+        padding: 0 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .leftSide img, .rightSide img {
+        width: 12px !important;
+    }
+    
+    .leftSide img, .rightSide img {
+        display: none !important;
+    }
+    
+    .center-column {
+        margin-top: 40px !important;
+        padding: 0 8px !important;
+    }
+    
+    .top-bar {
+        top: 3px !important;
+        left: 5px !important;
+        right: 5px !important;
+    }
+    
+    .info, .info1 {
+        font-size: 7px !important;
+        padding: 3px 6px !important;
+    }
+    
+    .title {
+        font-size: 20px !important;
+    }
+    
+    .header-title {
+        font-size: 16px !important;
+    }
+    
+    .section-content {
+        font-size: 12px !important;
+    }
+    
+    .message-text {
+        font-size: 12px !important;
+    }
+    
+    .line, .lineLower {
+        max-width: 200px !important;
+    }
+    
+    .footText {
+        font-size: 7px !important;
+        bottom: 10px !important;
+    }
+}

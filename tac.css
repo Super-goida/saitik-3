@@ -1,0 +1,462 @@
+@font-face {
+    font-family: cuyabra;
+    src: url(cuyabra.ttf);
+}
+
+@font-face {
+    font-family: KpProgrammerAlternatesNbp;
+    src: url(KpProgrammerAlternatesNbp.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+}
+
+.background {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+    position: relative;
+    z-index: 5;
+}
+
+.leftSide {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.rightSide {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.top-bar {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 20px 30px 0 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+    z-index: 12;
+}
+
+.center-column {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 30px 0 30px;
+}
+
+.info {
+    font-size: 15px;
+    font-family: cuyabra;
+    color: #4E4735;
+    text-align: left;
+}
+
+.info1 {
+    font-size: 16px;
+    font-family: cuyabra;
+    color: #4E4735;
+    padding: 8px;
+    text-align: right;
+}
+
+.pixels {
+    background-image: linear-gradient(0deg, #00000000 75%, rgba(0, 0, 0, 0.137) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent), linear-gradient(90deg, transparent 75%, rgba(0, 0, 0, 0.137) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%,
+            rgba(0, 0, 0, 0.705) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent 40%, rgba(0, 0, 0, 0.1) 100%, transparent);
+    height: 100vh;
+    background-size: 5px 5px;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.logo {
+    margin: 20px 0;
+}
+
+.logo img {
+    width: 215px;
+    height: auto;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.title {
+    text-align: center;
+    font-family: KpProgrammerAlternatesNbp;
+    font-size: 30px;
+    color: #4E4735;
+    margin: 0 0 20px 0;
+}
+
+.line {
+    width: 640px;
+    max-width: 90%;
+    height: 6px;
+    margin: 25px auto;
+}
+
+.lineLower {
+    width: 640px;
+    max-width: 90%;
+    height: 6px;
+    margin: 25px auto 0 auto;
+}
+
+/* ========== БЛОК С КНОПКАМИ И ОПИСАНИЯМИ ========== */
+.sector-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+.button-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+}
+
+.button {
+    width: 320px;
+    height: 65px;
+    background-color: #ACA68E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.button-link {
+    text-decoration: none;
+    display: block;
+}
+
+.button-text {
+    font-family: KpProgrammerAlternatesNbp;
+    font-size: 25px;
+    color: #4E4735;
+    transition: color 0.2s ease;
+}
+
+.button:hover {
+    background-color: #4E4735;
+}
+
+.button:hover .button-text {
+    color: #ACA68E;
+}
+
+.button-desc {
+    font-family: 'cuyabra', monospace;
+    font-size: 20px;
+    color: #4E4735;
+    line-height: 1.4;
+    max-width: 480px;
+    text-align: right;
+    background: transparent;
+    padding: 0;
+}
+
+.sector-description {
+    font-family: 'cuyabra', monospace;
+    font-size: 20px;
+    color: #4E4735;
+    text-align: center;
+    max-width: 750px;
+    margin: 20px auto;
+    line-height: 1.5;
+}
+
+.subdesc2 {
+    text-align: center;
+    font-family: cuyabra;
+    font-size: 30px;
+    color: #4E4735;
+    margin: 30px 0 20px 0;
+}
+
+.footText {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    bottom: 30px;
+    right: 0;
+    font-size: 13px;
+    font-family: cuyabra;
+    color: #4E4735;
+    padding: 0 50px;
+    pointer-events: none;
+    z-index: 12;
+}
+
+/* ========== АДАПТИВ ПОД ТЕЛЕФОНЫ ========== */
+
+/* Планшеты и маленькие ноутбуки */
+@media (max-width: 1024px) {
+    .button-row {
+        gap: 30px;
+    }
+    
+    .button {
+        width: 280px;
+        height: 60px;
+    }
+    
+    .button-text {
+        font-size: 20px;
+    }
+    
+    .button-desc {
+        font-size: 16px;
+        max-width: 380px;
+    }
+    
+    .sector-description {
+        font-size: 18px;
+        max-width: 650px;
+    }
+    
+    .title {
+        font-size: 26px;
+    }
+    
+    .subdesc2 {
+        font-size: 26px;
+    }
+}
+
+/* Мобильные устройства (ширина до 768px) */
+@media (max-width: 768px) {
+    /* Боковые сайдбары — как в main1 */
+    .leftSide, .rightSide {
+        padding: 0 3px !important;
+    }
+    
+    .leftSide img, .rightSide img {
+        width: 16px !important;
+        height: auto !important;
+    }
+    
+    /* Скрываем лишние картинки */
+    .leftSide img:nth-child(2), .leftSide img:nth-child(3),
+    .rightSide img:nth-child(2), .rightSide img:nth-child(3) {
+        display: none !important;
+    }
+    
+    /* Кнопки в столбик */
+    .sector-buttons {
+        gap: 20px;
+    }
+    
+    .button-row {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .button {
+        width: 260px;
+        height: 55px;
+    }
+    
+    .button-text {
+        font-size: 16px;
+    }
+    
+    .button-desc {
+        font-size: 14px;
+        max-width: 260px;
+        text-align: center;
+    }
+    
+    /* Заголовки */
+    .title {
+        font-size: 20px;
+    }
+    
+    .sector-description {
+        font-size: 14px;
+        margin: 15px auto;
+        padding: 0 10px;
+    }
+    
+    .subdesc2 {
+        font-size: 20px;
+        margin: 20px 0;
+    }
+    
+    /* Логотип */
+    .logo {
+        margin: 15px 0;
+    }
+    
+    .logo img {
+        width: 120px;
+    }
+    
+    /* Верхняя панель */
+    .top-bar {
+        padding: 10px 15px 0 15px;
+        gap: 10px;
+    }
+    
+    .info, .info1 {
+        font-size: 8px;
+        padding: 4px 6px;
+    }
+    
+    .info {
+        max-width: 65%;
+    }
+    
+    /* Линии — как в main1 */
+    .line, .lineLower {
+        width: 80% !important;
+        max-width: 250px !important;
+        height: 3px !important;
+        margin: 5px auto !important;
+    }
+    
+    /* Футер */
+    .footText {
+        font-size: 8px;
+        bottom: 3px;
+        padding: 0 15px;
+    }
+}
+
+/* Очень маленькие экраны (iPhone SE 375px) */
+@media (max-width: 480px) {
+    /* Боковые сайдбары */
+    .leftSide img, .rightSide img {
+        width: 12px !important;
+    }
+    
+    .leftSide img:nth-child(1), .rightSide img:nth-child(1),
+    .leftSide img:nth-child(2), .leftSide img:nth-child(3),
+    .rightSide img:nth-child(2), .rightSide img:nth-child(3) {
+        display: none !important;
+    }
+    
+    /* Кнопки */
+    .button {
+        width: 220px;
+        height: 48px;
+    }
+    
+    .button-text {
+        font-size: 14px;
+    }
+    
+    .button-desc {
+        font-size: 12px;
+        max-width: 220px;
+    }
+    
+    /* Заголовки */
+    .title {
+        font-size: 16px;
+    }
+    
+    .sector-description {
+        font-size: 12px;
+    }
+    
+    .subdesc2 {
+        font-size: 14px;
+        bottom: 40px;
+        padding: 0 15px;
+    }
+    
+    /* Логотип */
+    .logo img {
+        width: 80px;
+    }
+    
+    /* Верхняя панель */
+    .info, .info1 {
+        font-size: 7px;
+        padding: 3px 5px;
+    }
+    
+    /* Линии */
+    .line, .lineLower {
+        max-width: 200px !important;
+        height: 2px !important;
+        margin: 1px auto !important;
+    }
+    
+    /* Футер */
+    .footText {
+        font-size: 7px;
+        bottom: 3px;
+    }
+}
