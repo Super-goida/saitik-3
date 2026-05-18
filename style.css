@@ -1,0 +1,742 @@
+@font-face {
+    font-family: cuyabra;
+    src: url(cuyabra.ttf);
+}
+
+@font-face {
+    font-family: KpProgrammerAlternatesNbp;
+    src: url(KpProgrammerAlternatesNbp.ttf);
+}
+@font-face {
+    font-family: CocoBikeR;
+    src: url(CocoBikerLight-trial.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ========== ДЕСКТОПНАЯ ВЕРСИЯ ========== */
+.wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    min-height: 100vh;
+    position: relative;
+    z-index: 5;
+}
+
+.background {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.leftSide, .rightSide {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.leftSide {
+    grid-column: 1 / 2;
+}
+
+.rightSide {
+    grid-column: 3 / 4;
+}
+
+.center-content {
+    grid-column: 2 / 3;
+    z-index: 15;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.top-bar {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 12;
+    padding: 0 50px;
+    pointer-events: none;
+}
+
+.info, .info1 {
+    font-family: cuyabra;
+    color: #4E4735;
+    padding: 8px;
+    border-radius: 4px;
+    pointer-events: auto;
+}
+
+.info {
+    font-size: 15px;
+    text-align: left;
+}
+
+.info1 {
+    font-size: 16px;
+    text-align: right;
+}
+
+.pixels {
+    background-image: linear-gradient(0deg, #00000000 75%, rgba(0, 0, 0, 0.137) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent), linear-gradient(90deg, transparent 75%, rgba(0, 0, 0, 0.137) 100%,
+            transparent 40%, rgba(71, 68, 59, .1) 100%, transparent 40%,
+            rgba(0, 0, 0, 0.705) 100%, transparent 40%, rgba(71, 68, 59, .1) 100%,
+            transparent 40%, rgba(0, 0, 0, 0.1) 100%, transparent);
+    height: 100vh;
+    background-size: 5px 5px;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.logo {
+    margin: 20px 0;
+}
+
+.logo img {
+    width: 215px;
+    height: auto;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    font-family: KpProgrammerAlternatesNbp;
+    font-size: 30px;
+    color: #4E4735;
+}
+
+.line, .lineLower {
+    width: 640px;
+    max-width: 90%;
+    height: 6px;
+    margin: 20px auto;
+}
+
+.lineLower {
+    margin: 0 auto;
+}
+
+.desc {
+    text-align: center;
+    font-family: KpProgrammerAlternatesNbp;
+    font-size: 30px;
+    color: #4E4735;
+    margin: 20px;
+}
+
+.subdesc, .subdesc2 {
+    text-align: center;
+    font-family: cuyabra;
+    font-size: 30px;
+    color: #4E4735;
+}
+
+.subdesc2 {
+    margin: 20px;
+}
+
+.earth {
+    width: 319px;
+    height: 310px;
+    margin: 30px;
+}
+
+.machineHead {
+    width: 90px;
+    height: 90px;
+}
+
+.YoRHa {
+    width: 90px;
+    height: 120px;
+}
+
+.progbar {
+    width: 700px;
+    height: 28px;
+}
+
+.progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 1000px;
+}
+
+.sectors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 350px);
+    gap: 30px;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.tac, .tec, .his, .com {
+    width: 350px;
+    height: 70px;
+    background-color: #ACA68E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.tac {
+    cursor: pointer;
+}
+
+.tac:hover {
+    background-color: #4E4735;
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(172, 166, 142, 0.5);
+}
+
+.tac:hover .tacText {
+    color: #ACA68E;
+}
+
+.com {
+    cursor: pointer;
+}
+
+.com:hover {
+    background-color: #4E4735;
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(172, 166, 142, 0.5);
+}
+
+.com:hover .tacText {
+    color: #ACA68E;
+}
+
+.tacText {
+    font-family: KpProgrammerAlternatesNbp;
+    font-size: 25px;
+    color: #4E4735;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 640px;
+    max-width: 90%;
+    margin: 20px auto;
+    z-index: 17;
+}
+
+.search-container {
+    display: flex;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+}
+
+#searchInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #ACA68E;
+    font-family: 'KpProgrammerAlternatesNbp', monospace;
+    font-size: 20px;
+    padding: 12px 16px;
+    outline: none;
+    letter-spacing: 1px;
+}
+
+#searchInput::placeholder {
+    color: #ACA68E;
+    font-family: 'cuyabra', monospace;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.search-btn {
+    background: #4E4735;
+    border: none;
+    cursor: pointer;
+    padding: 0 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-btn:hover {
+    background: #ACA68E;
+}
+
+.search-icon {
+    width: 20px;
+    height: 25px;
+    color: #ACA68E;
+    transition: color 0.3s ease;
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid #4E4735;
+    border-top: none;
+    max-height: 400px;
+    overflow-y: auto;
+    display: none;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.search-results.show {
+    display: block;
+}
+
+.result-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #4E4735;
+    transition: all 0.2s ease;
+}
+
+.result-item:hover {
+    background: #4E4735;
+}
+
+.result-title {
+    font-family: 'KpProgrammerAlternatesNbp', monospace;
+    color: #ACA68E;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.result-preview {
+    font-family: 'cuyabra', monospace;
+    color: #8e886e;
+    font-size: 12px;
+}
+
+.footText {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    bottom: 50px;
+    right: 0;
+    font-size: 15px;
+    font-family: cuyabra;
+    color: #4E4735;
+    padding: 0 10px;
+    pointer-events: none;
+    z-index: 12;
+    margin-bottom: -40px;
+}
+
+@keyframes shakePulse {
+    0% { transform: scale(1) translateX(0); }
+    25% { transform: scale(1.02) translateX(-3px); }
+    50% { transform: scale(1.02) translateX(3px); }
+    75% { transform: scale(1.01) translateX(-1px); }
+    100% { transform: scale(1) translateX(0); }
+}
+
+.secret-sector:hover {
+    animation: shakePulse 0.35s ease-in-out;
+}
+
+.secret-sector {
+    width: 300px;
+    height: 60px;
+    background-color: #a8a8a8;
+    text-align: center;
+    display: flex;
+    border: solid 2px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    grid-column: span 2;
+    margin: 0 auto;
+}
+
+.secret-sector .tacText {
+    font-family: CocoBikeR;
+    font-size: 20px;
+    color: #520000;
+}
+
+/* ========== МОБИЛЬНАЯ ВЕРСИЯ (ДО 768px) ========== */
+@media (max-width: 768px) {
+    /* Боковые сайдбары — уменьшаем */
+    .leftSide, .rightSide {
+        padding: 0 3px !important;
+    }
+    
+    .leftSide img, .rightSide img {
+        width: 16px !important;
+        height: auto !important;
+    }
+    
+
+    
+    /* Кнопки в столбик */
+    .sectors-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+        justify-items: center !important;
+    }
+    
+    .tac, .tec, .his, .com {
+        width: 260px !important;
+        height: 55px !important;
+    }
+    
+    .tacText {
+        font-size: 16px !important;
+    }
+    
+    .secret-sector {
+        width: 260px !important;
+        height: 55px !important;
+        grid-column: span 1 !important;
+    }
+    
+    .secret-sector .tacText {
+        font-size: 14px !important;
+    }
+    
+    /* Заголовки и текст */
+    .title {
+        font-size: 20px !important;
+    }
+    
+    .desc {
+        font-size: 18px !important;
+        margin: 10px !important;
+    }
+    
+    .desc p {
+        font-size: 14px !important;
+    }
+    
+    .subdesc, .subdesc2 {
+        font-size: 18px !important;
+    }
+    
+    /* Логотип */
+    .logo img {
+        width: 120px !important;
+    }
+    
+    /* Прогресс-бар — полностью переопределяем ширину */
+    .progress {
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        flex-wrap: nowrap !important;
+    }
+    
+    .machineHead, .YoRHa {
+        width: 30px !important;
+        height: auto !important;
+    }
+    
+    .machineHead {
+        height: 30px !important;
+    }
+    
+    .YoRHa {
+        height: 40px !important;
+    }
+    
+    .progbar {
+        width: 180px !important;
+        height: auto !important;
+        max-width: 180px !important;
+    }
+    
+    .earth {
+        width: 100px !important;
+        height: auto !important;
+        margin: 10px !important;
+    }
+    
+    /* Верхняя панель */
+    .top-bar {
+        padding: 0 10px !important;
+    }
+    
+    .info, .info1 {
+        font-size: 13px !important;
+        padding: 3px 5px !important;
+    }
+    
+    .info {
+        max-width: 65% !important;
+    }
+    
+    /* Поиск */
+    .search-wrapper {
+        width: 95% !important;
+        margin: 10px auto !important;
+    }
+    
+    #searchInput {
+        font-size: 12px !important;
+        padding: 6px 10px !important;
+    }
+    
+    #searchInput::placeholder {
+        font-size: 9px !important;
+    }
+    
+    .search-btn {
+        padding: 0 10px !important;
+    }
+    
+    .search-icon {
+        width: 14px !important;
+        height: 18px !important;
+    }
+    
+    /* Линии */
+    .line, .lineLower {
+        width: 80% !important;
+        max-width: 250px !important;
+        height: 3px !important;
+        margin: 10px auto !important;
+    }
+    
+    /* Футер */
+    .footText {
+        font-size: 8px !important;
+        bottom: 15px !important;
+        padding: 0 15px !important;
+    }
+}
+
+/* ========== ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (iPhone SE 375px) ========== */
+@media (max-width: 480px) {
+    .leftSide img, .rightSide img {
+        width: 12px !important;
+    }
+        /* Скрываем лишние картинки, оставляем только одну */
+    .leftSide img:nth-child(1), .rightSide img:nth-child(1),
+    .leftSide img:nth-child(2), .leftSide img:nth-child(3),
+    .rightSide img:nth-child(2), .rightSide img:nth-child(3) {
+        display: none !important;
+    }
+    .tac, .tec, .his, .com {
+        width: 220px !important;
+        height: 45px !important;
+    }
+    
+    .tacText {
+        font-size: 14px !important;
+    }
+    
+    .secret-sector {
+        width: 220px !important;
+        height: 45px !important;
+    }
+    
+    .secret-sector .tacText {
+        font-size: 12px !important;
+    }
+    
+    .title {
+        font-size: 16px !important;
+    }
+    
+    .desc p {
+        font-size: 12px !important;
+    }
+    
+    .subdesc, .subdesc2 {
+        font-size: 10px !important;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .logo img {
+        width: 80px !important;
+    }
+    
+    .machineHead, .YoRHa {
+        width: 25px !important;
+    }
+    
+    .machineHead {
+        height: 25px !important;
+    }
+    
+    .YoRHa {
+        height: 35px !important;
+    }
+    
+    .progbar {
+        width: 140px !important;
+        max-width: 240px !important;
+    }
+    
+    .earth {
+        width: 70px !important;
+    }
+    
+    .info, .info1 {
+        font-size: 7px !important;
+        padding: 2px 4px !important;
+    }
+    
+    .line, .lineLower {
+        max-width: 200px !important;
+        height: auto !important;
+        padding: 0;
+        margin: 0;
+    }
+        /* Футер */
+    .footText {
+        font-size: 8px !important;
+        bottom: 10px !important;
+        padding: 0 15px !important;
+    }
+}
+/* ========== АДАПТИВНЫЕ СТИЛИ ДЛЯ РЕЗУЛЬТАТОВ ПОИСКА ========== */
+@media (max-width: 768px) {
+    .search-wrapper {
+        position: relative;
+        width: 100% !important;
+        max-width: 280px !important;
+        margin: 10px auto !important;
+    }
+    
+    .search-results {
+        width: 280px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        right: auto !important;
+        max-height: 300px !important;
+        font-size: 12px !important;
+    }
+    
+    .result-item {
+        padding: 10px 12px !important;
+    }
+    
+    .result-title {
+        font-size: 12px !important;
+    }
+    
+    .result-preview {
+        font-size: 10px !important;
+    }
+    
+    .no-result {
+        font-size: 12px !important;
+        padding: 12px !important;
+    }
+}
+/* ========== ДОПОЛНИТЕЛЬНЫЕ ПРАВКИ ДЛЯ АДАПТИВА ========== */
+
+/* Мобильные устройства (ширина до 768px) */
+@media (max-width: 768px) {
+    /* Увеличиваем отступ сверху для центрального контента, 
+       чтобы логотип не наезжал на верхнюю панель */
+    .center-content {
+        margin-top: 50px !important;
+        padding-top: 10px !important;
+    }
+    
+    /* Уменьшаем отступ логотипа сверху */
+    .logo {
+        margin-top: 5px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    /* Корректируем верхнюю панель, чтобы она не перекрывала контент */
+    .top-bar {
+        top: 5px !important;
+        padding: 0 10px !important;
+        border-radius: 4px;
+        width: auto;
+        left: 10px;
+        right: 10px;
+    }
+    
+    .info, .info1 {
+        font-size: 8px !important;
+        padding: 3px 5px !important;
+        border-radius: 4px;
+    }
+}
+
+/* Очень маленькие экраны (iPhone SE 375px) */
+@media (max-width: 480px) {
+    .center-content {
+        margin-top: 40px !important;
+    }
+    
+    .top-bar {
+        top: 3px !important;
+        left: 5px;
+        right: 5px;
+        padding: 0 5px !important;
+    }
+    
+    .info, .info1 {
+        font-size: 6px !important;
+        padding: 2px 4px !important;
+    }
+    
+    .logo {
+        margin-top: 5px !important;
+    }
+    
+    .logo img {
+        width: 70px !important;
+    }
+}
